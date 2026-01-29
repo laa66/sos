@@ -1,11 +1,11 @@
 package com.laa66;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("i = " + i);
-        }
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        System.out.println("Spring Application Context initialized successfully. HashCode: " + applicationContext.hashCode());
     }
 }
