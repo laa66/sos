@@ -9,11 +9,13 @@ public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "notification_id")
     private Integer notificationId;
 
     @Column(length = 1000)
     private String content;
 
+    @Column(name = "sent_at")
     private LocalDateTime sentAt;
 
     @Column(length = 30)
@@ -26,7 +28,8 @@ public class Notification {
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
-
+    public Notification() {
+    }
 
     public Notification(Integer notificationId, String content, LocalDateTime sentAt, String type, String status, Student student) {
         this.notificationId = notificationId;

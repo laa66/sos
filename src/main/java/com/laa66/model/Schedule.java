@@ -1,5 +1,8 @@
 package com.laa66.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +11,7 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "schedule_id")
     private Integer scheduleId;
 
     private Integer semester;
@@ -15,6 +19,13 @@ public class Schedule {
     @OneToOne
     @JoinColumn(name = "student_id", nullable = false, unique = true)
     private Student student;
+
+
+    @OneToMany(mappedBy = "schedule")
+    private List<ClassSession> classSessions = new ArrayList<>();
+
+    public Schedule() {
+    }
 
     public Schedule(Integer scheduleId, Integer semester, Student student) {
         this.scheduleId = scheduleId;

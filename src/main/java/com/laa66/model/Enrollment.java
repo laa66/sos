@@ -12,8 +12,10 @@ public class Enrollment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "enrollment_id")
     private Integer enrollmentId;
 
+    @Column(name = "enrollment_date")
     private LocalDate enrollmentDate;
 
     @Column(length = 30)
@@ -26,6 +28,9 @@ public class Enrollment {
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
+
+    public Enrollment() {
+    }
 
     public Enrollment(Integer enrollmentId, LocalDate enrollmentDate, String status, Student student, Course course) {
         this.enrollmentId = enrollmentId;

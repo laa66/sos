@@ -10,24 +10,27 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_id")
     private Integer paymentId;
 
     @Column(precision = 10, scale = 2)
     private BigDecimal amount;
 
+    @Column(name = "due_date")
     private LocalDate dueDate;
 
     @Column(length = 30)
     private String status;
 
+    @Column(name = "payment_date")
     private LocalDate paymentDate;
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
-    // getters & setters
-
+    public Payment() {
+    }
 
     public Payment(Integer paymentId, BigDecimal amount, LocalDate dueDate, String status, LocalDate paymentDate, Student student) {
         this.paymentId = paymentId;

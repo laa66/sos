@@ -9,12 +9,16 @@ public class ClassSession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "class_session_id")
     private Integer classSessionId;
 
-    @Column(length = 20)
+    @Column(name = "day_of_week", length = 20)
     private String dayOfWeek;
 
+    @Column(name = "start_time")
     private LocalTime startTime;
+
+    @Column(name = "end_time")
     private LocalTime endTime;
 
     @Column(length = 30)
@@ -31,8 +35,9 @@ public class ClassSession {
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    // getters & setters
+    public ClassSession() {
 
+    }
 
     public ClassSession(Integer classSessionId, String dayOfWeek, LocalTime startTime, LocalTime endTime, String room, String form, Schedule schedule, Course course) {
         this.classSessionId = classSessionId;

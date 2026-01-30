@@ -10,6 +10,7 @@ public class Grade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "grade_id")
     private Integer gradeId;
 
     @Column(precision = 3, scale = 1)
@@ -18,6 +19,7 @@ public class Grade {
     @Column(length = 30)
     private String type;
 
+    @Column(name = "issue_date")
     private LocalDate issueDate;
 
     @ManyToOne
@@ -27,6 +29,9 @@ public class Grade {
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
+
+    public Grade() {
+    }
 
     public Grade(Integer gradeId, BigDecimal value, String type, LocalDate issueDate, Student student, Course course) {
         this.gradeId = gradeId;

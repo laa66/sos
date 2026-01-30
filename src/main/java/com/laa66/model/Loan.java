@@ -9,12 +9,16 @@ public class Loan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "loan_id")
     private Integer loanId;
 
-    @Column(length = 255)
+    @Column(name = "book_title", length = 255)
     private String bookTitle;
 
+    @Column(name = "loan_date")
     private LocalDate loanDate;
+    
+    @Column(name = "return_deadline")
     private LocalDate returnDeadline;
 
     @ManyToOne

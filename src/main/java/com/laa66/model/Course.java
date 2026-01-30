@@ -1,5 +1,8 @@
 package com.laa66.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +11,7 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "course_id")
     private Integer courseId;
 
     @Column(nullable = false, length = 100)
@@ -20,6 +24,19 @@ public class Course {
     private Integer hours;
     private Integer semester;
     private Integer capacity;
+
+    @OneToMany(mappedBy = "course")
+    private List<Enrollment> enrollments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "course")
+    private List<Grade> grades = new ArrayList<>();
+
+    @OneToMany(mappedBy = "course")
+    private List<ClassSession> classSessions = new ArrayList<>();
+
+    public Course() {
+
+    }
 
     public Integer getCourseId() {
         return courseId;
@@ -77,7 +94,8 @@ public class Course {
         this.capacity = capacity;
     }
 
-    public Course(Integer courseId, String name, String description, Integer ects, Integer hours, Integer semester, Integer capacity) {
+    public Course(Integer courseId, String name, String description, Integer ects, Integer hours, Integer semester,
+            Integer capacity) {
         this.courseId = courseId;
         this.name = name;
         this.description = description;
